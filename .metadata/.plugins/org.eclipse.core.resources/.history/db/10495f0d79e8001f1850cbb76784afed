@@ -1,0 +1,28 @@
+#spring.application.name=Email_Writer
+###gemini.api.key=AIzaSyDj9WfNI3GWiB3twwnQJOLDkOCtLYv3ero
+##
+#gemini.api.url=https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?
+#gemini.api.key=AIzaSyDj9WfNI3GWiB3twwnQJOLDkOCtLYv3ero
+##server.port=8081
+spring.application.name=Email_Writer
+server.port=8081
+
+gemini.api.key=AIzaSyDj9WfNI3GWiB3twwnQJOLDkOCtLYv3ero
+# Enable Thymeleaf
+spring.thymeleaf.enabled=true
+
+# Set the default template location
+spring.thymeleaf.prefix=classpath:/templates/
+
+# Set the default file extension
+spring.thymeleaf.suffix=.html
+
+# Disable template caching (useful for development)
+spring.thymeleaf.cache=false
+
+# Enable hot reloading for Thymeleaf changes
+spring.devtools.restart.enabled=true
+spring.devtools.livereload.enabled=true
+
+# Set template mode (HTML, XML, etc.)
+spring.thymeleaf.mode=HTML

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Email Generator</title>
+</head>
+<body>
+
+    <h2>Email Generator</h2>
+    
+    <form th:action="@{/generate}" method="post" th:object="${emailRequest}">
+        <label>Enter Email Text:</label><br>
+        <textarea th:field="*{emailContent}" rows="4" cols="50" required></textarea><br><br>
+        
+        <label>Choose Tone:</label><br>
+        <select th:field="*{tone}" required>
+            <option value="Professional">Professional</option>
+            <option value="Polite">Polite</option>
+            <option value="Friendly">Friendly</option>
+            <option value="Formal">Formal</option>
+            <option value="Casual">Casual</option>
+            <option value="Encouraging">Encouraging</option>
+        </select><br><br>
+        
+        <button type="submit">Generate Email</button>
+    </form>
+    
+	<div th:if="${reply}" style="margin-top:20px; padding:10px; border:1px solid black;">
+	    <h3>Generated Email:</h3>
+	    <p th:text="${reply}"></p>
+	</div>
+
+</body>
+</html>

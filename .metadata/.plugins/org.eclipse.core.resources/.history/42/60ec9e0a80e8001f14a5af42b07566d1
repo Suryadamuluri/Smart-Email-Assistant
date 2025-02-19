@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Email Generator</title>
+</head>
+<body>
+<center>
+    <h2>Email Generator</h2>
+    
+    <form th:action="@{/generate}" method="post" th:object="${emailRequest}">
+        <label>Enter Email Text:</label><br>
+        <textarea th:field="*{emailContent}" rows="4" cols="50" required></textarea><br><br>
+        
+        <label>Choose Tone:</label><br>
+        <select th:field="*{tone}" required>
+            <option value="Professional">Professional</option>
+            <option value="Polite">Polite</option>
+            <option value="Friendly">Friendly</option>
+            <option value="Formal">Formal</option>
+            <option value="Casual">Casual</option>
+            <option value="Encouraging">Encouraging</option>
+        </select><br><br>
+        
+        <button type="submit">Generate Email</button>
+    </form>
+    
+	<div th:if="${reply}" style="margin-top:20px; padding:10px; border:1px solid black;">
+	    <h3>Generated Email:</h3>
+	    <p th:text="${reply}"></p>
+	</div>
+</center>
+</body>
+</html>
+<!--!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Email Generator</title>
+</head>
+<body>
+<center>
+    <h2>Email Generator</h2>
+    
+    <form id="emailForm">
+        <label>Enter Email Text:</label><br>
+        <textarea id="emailContent" th:field="*{emailContent}" rows="4" cols="50" required></textarea><br><br>
+        
+        <label>Choose Tone:</label><br>
+        <select id="tone" th:field="*{tone}" required>
+            <option value="Professional">Professional</option>
+            <option value="Polite">Polite</option>
+            <option value="Friendly">Friendly</option>
+            <option value="Formal">Formal</option>
+            <option value="Casual">Casual</option>
+            <option value="Encouraging">Encouraging</option>
+        </select><br><br>
+        
+        <button type="submit">Generate Email</button>
+    </form>
+    
+	<div id="generatedEmail" style="margin-top:20px; padding:10px; border:1px solid black; display:none;">
+	    <h3>Generated Email:</h3>
+	    <p id="responseText" th:text="${reply}"></p>
+	</div>
+
+    <script>
+        document.getElementById("emailForm").addEventListener("submit", function(event) {
+            event.preventDefault();  // Prevents the form from submitting in the usual way
+            
+            // Collect form data
+            const emailContent = document.getElementById("emailContent").value;
+            const tone = document.getElementById("tone").value;
+
+            // Create the JSON object
+            const emailData = {
+                emailContent: emailContent,
+                tone: tone
+            };
+
+            // Send POST request with JSON body
+            fetch("/generate", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(emailData)
+            })
+            .then(response => response.text())  // Assuming server returns a plain text response
+            .then(data => {
+                // Display generated email in the page
+                document.getElementById("generatedEmail").style.display = 'block';
+                document.getElementById("responseText").innerText = data;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</center>
+</body>
+</html-->

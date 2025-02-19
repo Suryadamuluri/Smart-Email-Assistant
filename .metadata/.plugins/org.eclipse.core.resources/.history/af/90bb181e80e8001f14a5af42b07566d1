@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Email Generator</title>
+    <script th:inline="javascript">
+        function submitForm(event) {
+            event.preventDefault();  // Prevent default form submission
+
+            // Collect form data with Thymeleaf-resolved IDs
+            let emailContent = document.getElementById("emailContent").value;
+            let tone = document.getElementById("tone").value;
+
+            // Create JSON object
+            let emailData = {
+                emailContent: emailContent,
+                tone: tone
+            };
+
+            // Send JSON request
+            fetch(/*[[@{/email/generate}]]*/, {  // Thymeleaf dynamically resolves URL
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(emailData)
+            })
+            .then(response => response.json())  // Expect JSON response
+            .then(data => {
+                // Display generated email response
+                let responseDiv = document.getElementById("generatedEmail");
+                responseDiv.style.display = 'block';
+                document.getElementById("responseText").innerText = data.reply;
+            })
+            .catch(error => {
+                console.error('Error:", error);
+            });
+        }
+    </script>
+</head>
+<body>
+<center>
+    <h2>Email Generator</h2>
+    
+    <form id="emailForm" onsubmit="submitForm(event)" th:object="${emailRequest}">
+        <label>Enter Email Text:</label><br>
+        <textarea th:id="emailContent" th:field="*{emailContent}" rows="4" cols="50" required></textarea><br><br>
+        
+        <label>Choose Tone:</label><br>
+        <select th:id="tone" th:field="*{tone}" required>
+            <option value="Professional">Professional</option>
+            <option value="Polite">Polite</option>
+            <option value="Friendly">Friendly</option>
+            <option value="Formal">Formal</option>
+            <option value="Casual">Casual</option>
+            <option value="Encouraging">Encouraging</option>
+        </select><br><br>
+        
+        <button type="submit">Generate Email</button>
+    </form>
+    
+    <div th:id="generatedEmail" style="margin-top:20px; padding:10px; border:1px solid black; display:none;">
+        <h3>Generated Email:</h3>
+        <p th:id="responseText"></p>
+    </div>
+</center>
+</body>
+</html>

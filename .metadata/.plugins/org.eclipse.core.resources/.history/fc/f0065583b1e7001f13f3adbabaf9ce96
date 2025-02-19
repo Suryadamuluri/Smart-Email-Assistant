@@ -1,0 +1,67 @@
+////package com.example.demo;
+////
+////import lombok.Data;
+////
+////@Data //which helps to generte setters getters and constructors
+////public class EmailRequest {
+////	
+////	private String emailContent;
+////	private String tone;
+////	
+////	public EmailRequest(String emailContent) {
+////		super();
+////		this.emailContent = emailContent;
+////	}
+////	public EmailRequest(String emailContent, String tone) {
+////		super();
+////		this.emailContent = emailContent;
+////		this.tone = tone;
+////	}
+////	public String getEmailContent() {
+////		return emailContent;
+////	}
+////	public void setEmailContent(String emailContent) {
+////		this.emailContent = emailContent;
+////	}
+////	public String getTone() {
+////		return tone;
+////	}
+////	public void setTone(String tone) {
+////		this.tone = tone;
+////	}
+////	@Override
+////	public String toString() {
+////		return "EmailRequest [emailContent=" + emailContent + ", tone=" + tone + ", getEmailContent()="
+////				+ getEmailContent() + ", getTone()=" + getTone() + ", getClass()=" + getClass() + ", hashCode()="
+////				+ hashCode() + ", toString()=" + super.toString() + "]";
+////	}
+////}
+//package com.example.demo;
+//
+//import lombok.AllArgsConstructor;
+//import lombok.Data;
+//import lombok.NoArgsConstructor;
+//
+//@Data
+//@NoArgsConstructor
+//@AllArgsConstructor
+//public class EmailRequest {
+//    private String emailContent;
+//    private String tone;
+
+
+package com.example.demo;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+
+@Data  // Generates getters, setters, toString, equals, and hashCode
+@NoArgsConstructor  // Generates a no-argument constructor
+@AllArgsConstructor  // Generates an all-argument constructor
+public class EmailRequest {
+    private String emailContent;
+    private String tone;
+}
+
+//}

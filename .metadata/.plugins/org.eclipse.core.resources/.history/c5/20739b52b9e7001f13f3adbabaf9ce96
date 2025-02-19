@@ -1,0 +1,10 @@
+#spring.application.name=Email_Writer
+###gemini.api.key=AIzaSyDj9WfNI3GWiB3twwnQJOLDkOCtLYv3ero
+##
+#gemini.api.url=https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?
+#gemini.api.key=AIzaSyDj9WfNI3GWiB3twwnQJOLDkOCtLYv3ero
+##server.port=8081
+spring.application.name=Email_Writer
+server.port=8081
+
+gemini.api.key=AIzaSyDj9WfNI3GWiB3twwnQJOLDkOCtLYv3ero

@@ -1,0 +1,6 @@
+spring.application.name=Email_Writer
+#gemini.api.key=AIzaSyDj9WfNI3GWiB3twwnQJOLDkOCtLYv3ero
+
+gemini.api.url=${GEMINI_URL}
+gemini.api.key=AIzaSyDj9WfNI3GWiB3twwnQJOLDkOCtLYv3ero
+server.port=8081
